@@ -17,10 +17,10 @@ namespace Domain.Entity
         private void ValidateCPFName(string cpf, string name)
         {
            if(string.IsNullOrEmpty(cpf))
-                throw new Exception("Pessoa.Cpf");
+                throw new EntityException("Pessoa.Cpf");
 
             if(string.IsNullOrEmpty(name))
-                throw new Exception("Pessoa.Name");
+                throw new EntityException("Pessoa.Name");
         }
     }
 }

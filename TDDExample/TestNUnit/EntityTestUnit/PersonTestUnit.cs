@@ -1,13 +1,12 @@
 using Domain.Entity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using NUnit.Framework;
 
-namespace TestMSTest.EntityTest
+namespace TestNUnit
 {
-    [TestClass]
-    public class PersonTest
+    public class PersonTestUnit
     {
-        [TestMethod]
+
+        [Test]
         public void PeopleIsValid()
         {
             string cpf = "12345678901";
@@ -20,26 +19,23 @@ namespace TestMSTest.EntityTest
             Assert.IsTrue(person.Name == name);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(EntityException))]
+        [Test]
         public void PeopleNotCreateCPF()
         {
             string cpf = null;
             string name = "Teste Henrique";
 
-            Person person = new Person(cpf, name);
-
+            Assert.Throws<EntityException>(() => new Person(cpf, name));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(EntityException))]
+        [Test]
         public void PeopleNotCreateName()
         {
             string cpf = "12345678901";
             string name = null;
 
-            Person person = new Person(cpf, name);
-
+            Assert.Throws<EntityException>(() => new Person(cpf, name));
         }
+
     }
 }
